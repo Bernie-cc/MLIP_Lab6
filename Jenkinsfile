@@ -7,6 +7,9 @@ pipeline {
                 sh '''#!/bin/bash
                 echo 'In C or Java, we can compile our program in this step'
                 echo 'In Python, we can build our package here or skip this step'
+                
+                # 安装项目依赖
+                pip install pytest pandas numpy
                 '''
             }
         }
@@ -17,7 +20,7 @@ pipeline {
 
                 # TODO fill out the path to conda here
                 # sudo /PATH/TO/CONDA init
-                source mlip_lab6/bin/activate
+                source ./mlip_lab6/bin/activate
                 
 
                 # TODO Complete the command to run pytest
@@ -25,7 +28,7 @@ pipeline {
                 pytest
 
                 echo 'pytest not runned'
-                exit 1 #comment this line after implementing Jenkinsfile
+                # exit 1 #comment this line after implementing Jenkinsfile
                 '''
 
             }
